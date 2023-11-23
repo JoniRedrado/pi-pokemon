@@ -1,4 +1,5 @@
 const { DataTypes } = require('sequelize');
+const { v4: uuidv4} = require('uuid')
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
@@ -6,7 +7,7 @@ module.exports = (sequelize) => {
   sequelize.define('pokemon', {
     id: {
       type: DataTypes.UUID,
-      defaultValue: () => uuidv4(), // Asigna un valor UUID por defecto al crear un nuevo registro
+      defaultValue: () => uuidv4(),
       allowNull: false,
       primaryKey: true,
     },
