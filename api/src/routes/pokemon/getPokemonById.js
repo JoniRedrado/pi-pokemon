@@ -1,8 +1,10 @@
 const axios = require('axios')
+const {Pokemon, } = require('../../db.js')
 
 module.exports = ( req, res ) => {
     
     const { id } = req.params;
+    console.log(typeof (id+0));
 
     axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
         .then(({data})=>{
@@ -20,6 +22,22 @@ module.exports = ( req, res ) => {
             }
             console.log(pokemon);
             res.status(200).json(pokemon)
+        })
+        .catch(error => {
+            Pokemon.findOne({where: {id: id}})
+                .then(dbPokemon => {
+                    dbPokemon.getTypes()
+                        .then(types => {
+                            dbPokemon.dataValues.tipos = types
+                            res.status(200).json(dbPokemon)
+                        })
+                        .catch(error => {
+                            console.error('No se encontraron los tipos.');
+                        })
+                })
+                .catch(error => {
+                    res.status(404).send('No se ha encontrado el pokemon.')
+                })
         })
 
 }
