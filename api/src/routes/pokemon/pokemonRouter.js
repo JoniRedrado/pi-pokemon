@@ -3,10 +3,12 @@ const pokemonRouter = Router();
 
 const getPokemons = require('./getPokemons')
 const getPokemonById = require ('./getPokemonById')
-const postNewPokemon = require('./postNewPokemon')
+const postNewPokemon = require('./postNewPokemon');
+const getPokemonByName = require('./getPokemonByName');
 
 pokemonRouter.get('/', getPokemons)
 pokemonRouter.post('/', postNewPokemon)
 pokemonRouter.get('/:id', getPokemonById)
+pokemonRouter.get('/search/name', getPokemonByName)
 
 module.exports = pokemonRouter;
