@@ -1,5 +1,15 @@
+:root {
+  --rojo: #b90504;
+  --bordo: #990100;
+  --gris: #333333;
+  --crema: #e8e8e8;
+  --blanco: #f6f6f6
+}
+
+
 .App {
   text-align: center;
+  background-color: var(--crema);
 }
 
 .App-logo {

@@ -1,0 +1,51 @@
+nav {
+    padding: 1rem;
+    background-color: var(--bordo);
+    display: flex;
+    align-items: center;
+    height: 15vh;
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.link{
+    background-color: var(--gris);
+    padding: 0.5rem;
+    margin: 1rem;
+    border-radius: 5px;
+    color: var(--blanco);
+    text-decoration: none;
+}
+.link:hover{
+    background-color: var(--crema);
+    color: var(--rojo);
+    cursor: pointer;
+}
+
+nav input{
+    width: 20%;
+    height: 30%;
+    border-radius: 20px;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    background-color: var(--crema);
+}
+
+nav button {
+    height: 40%;
+    border-radius: 100%;
+    font-size: 1.5rem;
+    margin: 1rem;
+}
+
+nav button:hover{
+    cursor: pointer;
+    background-color: var(--gris);
+}
+
