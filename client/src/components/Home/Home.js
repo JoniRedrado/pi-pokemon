@@ -7,14 +7,15 @@ import axios from 'axios'
 import Navbar from '../Navbar/Navbar'
 //CSS
 import './Home.css'
+import PokemonCard from '../PokemonCard/PokemonCard'
 
 
 const Home = () => {
 
-    var options = [{name:"Fuego",id:1},{name:"Agua",id:2},{name:"Tierra",id:3},{name:"Aire",id:4}]
+    //var options = [{name:"Fuego",id:1},{name:"Agua",id:2},{name:"Tierra",id:3},{name:"Aire",id:4}]
 
     const [pokemons, setPokemons] = useState()
-
+    const [types, setTypes] = useState({})
 
     useEffect(()=>{
 
@@ -23,7 +24,20 @@ const Home = () => {
                 setPokemons(data.data);
                 console.log(data);
             })
+        getTypes()
     },[])
+
+    const getTypes = ()=>{
+        axios.get('http://localhost:3001/types')
+            .then(({data}) => {
+                setTypes(data)
+                console.log(data);
+            })
+    }
+    //SEGUIR CON REDUX
+    const getPokemonByType = (id)=>{
+        axios
+    }
 
   return (
     <main>
@@ -44,8 +58,8 @@ const Home = () => {
             <article>
                 <p>TYPE</p>
                 <Select
-                    options={options}
-                    labelField="name" valueField="id"
+                    options={types}
+                    labelField="nombre" valueField="id"
                     onChange={(value) => console.log(value)}
                 />
             </article>
@@ -53,7 +67,7 @@ const Home = () => {
         <div className='card-container'>
             {pokemons ? pokemons.map(pokemon => {
                 return (
-                    <p key={pokemon.id}>{pokemon.nombre}</p>
+                    <PokemonCard img={pokemon.imagen} name={pokemon.nombre} types={pokemon.tipos}/>
                 )
             }) : <></>}
         </div>

@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <nav>
         <Link to="/home">
-          <img alt='logo' src='https://archive.org/download/PokemonIcon/pokemon%20icon.png'/>
+          <img className='logo' alt='logo' src='https://archive.org/download/PokemonIcon/pokemon%20icon.png'/>
         </Link>
         <ul>
             <Link to="/about" className="link">ABOUT</Link>

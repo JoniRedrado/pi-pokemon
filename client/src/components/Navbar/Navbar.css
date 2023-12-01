@@ -6,6 +6,10 @@ nav {
     height: 15vh;
 }
 
+.logo{
+    height: 13rem;
+}
+
 ul{
     list-style: none;
     display: flex;

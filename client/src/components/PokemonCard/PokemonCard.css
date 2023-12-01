@@ -1,0 +1,23 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 60vh;
+    margin: 2rem;
+    background-color: var(--crema);
+    border: solid 3px var(--bordo);
+    border-radius: 5px;
+    color: var(--rojo);
+    font-weight: bold;
+    padding: 1rem;
+}
+
+.card img{
+    border: solid 1px white;
+    border-radius: 5px;
+    background-color: var(--gris);
+}
+
+.types-container{
+    background-color: var();
+}
