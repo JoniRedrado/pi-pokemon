@@ -5,12 +5,12 @@ import './PokemonCard.css'
 const PokemonCard = ({img, name, types}) => {
   return (
     <div className='card'>
-        <img src={img}/>
+        <img src={img} alt='pokemon-img'/>
         <h3>{name.toUpperCase()}</h3>
         <div className='types-container'>
             {types.map(type => {
                 return (
-                    <p>{type.type.name.toUpperCase()}</p>
+                    <p key={type.slot}>{type.type.name.toUpperCase()}</p>
                     )
                 })}
         </div>

@@ -2,28 +2,32 @@
 import React, { useEffect } from 'react'
 import {Select} from 'react-dropdown-select'
 import { useState } from 'react'
-import axios from 'axios'
+import axios, { all } from 'axios'
 //COMPONENTS
 import Navbar from '../Navbar/Navbar'
 //CSS
 import './Home.css'
 import PokemonCard from '../PokemonCard/PokemonCard'
+//REDUX
+import { useDispatch, useSelector } from 'react-redux'
+import { getPokemons } from '../../Redux/Actions/actions'
 
+const Home = (props) => {
 
-const Home = () => {
+    const allPokemons = useSelector((state) => state.allPokemons)
+    const dispatch = useDispatch()
 
-    //var options = [{name:"Fuego",id:1},{name:"Agua",id:2},{name:"Tierra",id:3},{name:"Aire",id:4}]
-
-    const [pokemons, setPokemons] = useState()
+    //const [pokemons, setPokemons] = useState()
     const [types, setTypes] = useState({})
 
     useEffect(()=>{
+        dispatch(getPokemons())
 
-        axios.get('http://localhost:3001/pokemon')
+        /*axios.get('http://localhost:3001/pokemon')
             .then( data => {
                 setPokemons(data.data);
                 console.log(data);
-            })
+            })*/
         getTypes()
     },[])
 
@@ -34,10 +38,10 @@ const Home = () => {
                 console.log(data);
             })
     }
-    //SEGUIR CON REDUX
+    /*SEGUIR CON REDUX
     const getPokemonByType = (id)=>{
         
-    }
+    }*/
 
   return (
     <main>
@@ -65,9 +69,9 @@ const Home = () => {
             </article>
         </div>
         <div className='card-container'>
-            {pokemons ? pokemons.map(pokemon => {
+            {allPokemons ? allPokemons.map(pokemon => {
                 return (
-                    <PokemonCard img={pokemon.imagen} name={pokemon.nombre} types={pokemon.tipos}/>
+                    <PokemonCard img={pokemon.imagen} name={pokemon.nombre} types={pokemon.tipos} key={pokemon.id}/>
                 )
             }) : <></>}
         </div>
