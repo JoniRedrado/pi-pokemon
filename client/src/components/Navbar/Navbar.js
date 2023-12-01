@@ -2,6 +2,7 @@ import React from 'react'
 
 //CSS
 import './Navbar.css';
+import logo from '../../assets/pokemonIcon.png'
 
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 
@@ -9,7 +10,7 @@ const Navbar = () => {
   return (
     <nav>
         <Link to="/home">
-          <img className='logo' alt='logo' src='https://archive.org/download/PokemonIcon/pokemon%20icon.png'/>
+          <img className='logo' alt='logo' src={logo}/>
         </Link>
         <ul>
             <Link to="/about" className="link">ABOUT</Link>

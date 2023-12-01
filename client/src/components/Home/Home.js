@@ -36,7 +36,7 @@ const Home = () => {
     }
     //SEGUIR CON REDUX
     const getPokemonByType = (id)=>{
-        axios
+        
     }
 
   return (
