@@ -24,7 +24,11 @@ module.exports = ( req, res ) => {
 
             Pokemon.findAll({where: {nombre: name}})
                 .then( dbPokemon => {
-                    pokemonResults.push(dbPokemon)
+                    if (dbPokemon.length > 0) {
+                        dbPokemon.forEach(pokemon => {
+                            pokemonResults.push(pokemon)
+                        });
+                    }
                     res.status(200).json(pokemonResults)
                 })
         })

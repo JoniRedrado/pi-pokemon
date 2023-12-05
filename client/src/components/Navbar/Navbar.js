@@ -5,6 +5,7 @@ import './Navbar.css';
 import logo from '../../assets/pokemonIcon.png'
 
 import { Link } from 'react-router-dom/cjs/react-router-dom';
+import SearchBar from '../SearchBar/SearchBar';
 
 const Navbar = () => {
   return (
@@ -16,8 +17,9 @@ const Navbar = () => {
             <Link to="/about" className="link">ABOUT</Link>
             <Link to="/create" className="link">CREATE POKEMON</Link>
         </ul>
-        <input type='text'/>
-        <button>🔍</button>
+        <SearchBar />
+        {/*<input type='text'/>
+        <button>🔍</button>*/}
     </nav>
   )
 }

@@ -15,6 +15,7 @@ const SearchBar = () => {
 
     const handleSubmit = (e) =>{
         e.preventDefault()
+        console.log("submit");
         dispatch(searchPokemon(state))
     }
 

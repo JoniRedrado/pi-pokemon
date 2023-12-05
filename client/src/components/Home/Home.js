@@ -10,12 +10,12 @@ import './Home.css'
 import PokemonCard from '../PokemonCard/PokemonCard'
 //REDUX
 import { useDispatch, useSelector } from 'react-redux'
-import { getPokemons, filterPokemonType, orderBy } from '../../Redux/Actions/actions'
+import { getPokemons, filterPokemonType, orderBy, changePage } from '../../Redux/Actions/actions'
 
 const Home = (props) => {
 
-    const allPokemons = useSelector((state) => state.allPokemons)
-    const filteredPokemons = useSelector((state)=> state.filteredPokemons)
+    var allPokemons = useSelector((state) => state.clientPokemons)
+    //const filteredPokemons = useSelector((state)=> state.filteredPokemons)
     const dispatch = useDispatch()
 
     const [types, setTypes] = useState({})
@@ -33,9 +33,20 @@ const Home = (props) => {
             })
     }
 
+    const orderPokemons = (action)=>{
+        dispatch(orderBy(action))
+        console.log(allPokemons);
+    }
+
+    const modifyPage = (action)=>{
+        
+        dispatch(changePage(action))
+    }
+
     //NO ACTUALIZA EN TIEMPO REAL LOS ORDENAMIENTOS. VER ESO!!!!!
     //PROBAR CON UN MISMO USESTATE PARA TODOS
-    
+    //filtro db y api, traer todos los pokemons y filtrar si son de api o db de la misma manera que con los tipos.
+
   return (
     <main>
         <Navbar />
@@ -46,11 +57,11 @@ const Home = (props) => {
             </article>
             <article>
                 <p>ORDER</p>
-                <button onClick={()=>dispatch(orderBy("A-Z"))}>A-Z</button>
+                <button onClick={()=>orderPokemons("Z-A")}>A-Z</button>
             </article>
             <article>
                 <p>POWER</p>
-                <button onClick={()=>dispatch(orderBy("ASC"))}>ASC</button>
+                <button onClick={()=>orderPokemons("ASC")}>ASC</button>
             </article>
             <article>
                 <p>TYPE</p>
@@ -62,7 +73,7 @@ const Home = (props) => {
             </article>
         </div>
         <div className='card-container'>
-            {filteredPokemons.length !== 0 ? filteredPokemons.map(pokemon => {
+            {/*filteredPokemons.length !== 0 ? filteredPokemons.map(pokemon => {
                 return (
                     <PokemonCard img={pokemon.imagen} name={pokemon.nombre} types={pokemon.tipos} key={pokemon.id}/>
                 )
@@ -75,7 +86,18 @@ const Home = (props) => {
                 return (
                     <PokemonCard img={pokemon.imagen} name={pokemon.nombre} types={pokemon.tipos} key={pokemon.id}/>
                 )
-            })}
+            })*/}
+            {
+                allPokemons ? allPokemons.map(pokemon => {
+                    return (
+                        <PokemonCard img={pokemon.imagen} name={pokemon.nombre} types={pokemon.tipos} key={pokemon.id}/>
+                    )
+                })
+                :
+                <></>
+            }
+            <button onClick={()=>modifyPage("PREV")}>PREV</button>
+            <button onClick={()=>modifyPage("NEXT")}>NEXT</button>
         </div>
     </main>
   )
