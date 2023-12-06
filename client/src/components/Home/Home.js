@@ -10,12 +10,11 @@ import './Home.css'
 import PokemonCard from '../PokemonCard/PokemonCard'
 //REDUX
 import { useDispatch, useSelector } from 'react-redux'
-import { getPokemons, filterPokemonType, orderBy, changePage } from '../../Redux/Actions/actions'
+import { getPokemons, filterPokemonType, orderBy, changePage, resetFilters } from '../../Redux/Actions/actions'
 
 const Home = (props) => {
 
     var allPokemons = useSelector((state) => state.clientPokemons)
-    //const filteredPokemons = useSelector((state)=> state.filteredPokemons)
     const dispatch = useDispatch()
 
     const [types, setTypes] = useState({})
@@ -39,15 +38,13 @@ const Home = (props) => {
     }
 
     const modifyPage = (action)=>{
-        
         dispatch(changePage(action))
     }
 
-    //NO ACTUALIZA EN TIEMPO REAL LOS ORDENAMIENTOS. VER ESO!!!!!
-    //PROBAR CON UN MISMO USESTATE PARA TODOS
     //filtro db y api, traer todos los pokemons y filtrar si son de api o db de la misma manera que con los tipos.
-
-  return (
+    //Emprolijar y componentizar
+    //Falta implementar redirect al hacer click en card y filtrar por API/DB
+    return (
     <main>
         <Navbar />
         <div className='filter-container'>
@@ -73,22 +70,11 @@ const Home = (props) => {
                     onChange={(value) => dispatch(filterPokemonType(value[0].nombre))}
                 />
             </article>
+            <article>
+                <button onClick={()=>dispatch(resetFilters())}>RESET</button>
+            </article>
         </div>
         <div className='card-container'>
-            {/*filteredPokemons.length !== 0 ? filteredPokemons.map(pokemon => {
-                return (
-                    <PokemonCard img={pokemon.imagen} name={pokemon.nombre} types={pokemon.tipos} key={pokemon.id}/>
-                )
-            })
-            
-            
-            :  
-            
-            allPokemons.map(pokemon => {
-                return (
-                    <PokemonCard img={pokemon.imagen} name={pokemon.nombre} types={pokemon.tipos} key={pokemon.id}/>
-                )
-            })*/}
             {
                 allPokemons ? allPokemons.map(pokemon => {
                     return (
@@ -102,7 +88,7 @@ const Home = (props) => {
             <button onClick={()=>modifyPage("NEXT")}>NEXT</button>
         </div>
     </main>
-  )
+    )
 }
 
 export default Home

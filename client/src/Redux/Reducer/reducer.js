@@ -1,11 +1,15 @@
 //IMPORT action-types
-import {GET_POKEMONS, FILTER_BY_TYPE, ORDER_BY, SEARCH_POKEMON, PAGINATE} from '../Actions/actions'
+import {GET_POKEMONS, FILTER_BY_TYPE, ORDER_BY, SEARCH_POKEMON, PAGINATE, RESET_FILTERS} from '../Actions/actions'
 
 //DEFINE initialState
 let initialState = {
+    //Contiene todos los pokemons
     allPokemons : [],
+    //Contiene los pokemons que cumplen con los filtros/ordenamientos/busquedas
     backupPokemons: [],
+    //Contiene los pokemons a renderizar segun paginado
     clientPokemons: [],
+    //Pagina actual del paginado
     currentPage: 0
 }
 
@@ -14,25 +18,20 @@ let initialState = {
 function rootReducer (state=initialState, action){
     const ITEMS_PER_PAGE = 5
     switch (action.type) {
+
         case GET_POKEMONS:
-            //state.allPokemons = action.payload
             return {...state, allPokemons: action.payload,  backupPokemons: action.payload, clientPokemons: [...action.payload].splice(0, ITEMS_PER_PAGE)}
         
+        case RESET_FILTERS:
+            let resetFilters = [...state.allPokemons]
+            console.log(resetFilters);
+            return {...state,
+                    backupPokemons: resetFilters,
+                    clientPokemons: [...resetFilters].splice(0, ITEMS_PER_PAGE),
+                    currentPage: 0
+            }
+
         case FILTER_BY_TYPE:
-            /*const pokemonByType = state.allPokemons.filter( pokemon => {
-                var bool = false
-                pokemon.tipos.forEach(tipo => {
-                    if(tipo.type.name === action.payload) {
-                        bool = true
-                    }
-                });
-                return bool
-            })
-            console.log(pokemonByType);           
-            return {...state, 
-                    backupPokemons: pokemonByType, 
-                    clientPokemons:[...state.backupPokemons].splice(0, ITEMS_PER_PAGE)
-                }*/
             let pokemonByType = [...state.allPokemons].filter( pokemon => {
                 var bool = false
                 pokemon.tipos.forEach(tipo => {
@@ -96,7 +95,7 @@ function rootReducer (state=initialState, action){
                 
                 case "ASC":
                     orderedPokemons = [...state.backupPokemons].sort((a,b)=>a.ataque - b.ataque)
-                    console.log(orderedPokemons);
+                    //console.log(orderedPokemons);
                     return {...state,
                             clientPokemons: [...orderedPokemons].splice(0, ITEMS_PER_PAGE),
                             backupPokemons: orderedPokemons,
@@ -105,7 +104,7 @@ function rootReducer (state=initialState, action){
 
                 case "DES":
                     orderedPokemons = [...state.backupPokemons].sort((a,b)=>b.ataque - a.ataque)
-                    console.log(orderedPokemons);
+                    //console.log(orderedPokemons);
                     return {...state,
                             clientPokemons: [...orderedPokemons].splice(0, ITEMS_PER_PAGE),
                             backupPokemons: orderedPokemons,
@@ -115,14 +114,16 @@ function rootReducer (state=initialState, action){
                 default:
                     break;
             }
-
             break;
-            //return {...state, allPokemons: []}
         
         case SEARCH_POKEMON:
-            //state.clientPokemons = action.payload
-            console.log(state);
-            return {...state, clientPokemons: action.payload}
+            const searchPokemons = action.payload
+            
+            return {...state, 
+                    clientPokemons: [...searchPokemons].splice(0, ITEMS_PER_PAGE),
+                    backupPokemons: searchPokemons,
+                    currentPage: 0
+                }
         
         case PAGINATE:
             switch (action.payload) {

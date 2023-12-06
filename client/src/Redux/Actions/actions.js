@@ -6,14 +6,14 @@ export const FILTER_BY_TYPE = "FILTER_BY_TYPE"
 export const ORDER_BY = "ORDER_BY"
 export const SEARCH_POKEMON = "SEARCH_POKEMON"
 export const PAGINATE = "PAGINATE"
+export const RESET_FILTERS = "RESET_FILTERS"
 
 //Actions
+
 export const getPokemons = ()=>{
     return function(dispatch){
-        //peticion al back
         axios.get("http://localhost:3001/pokemon")
             .then(({data})=> {
-                //console.log(data);
                 dispatch({type: GET_POKEMONS, payload: data})
             })
     }
@@ -44,5 +44,11 @@ export const searchPokemon = (search) => {
 export const changePage = (action) => {
     return function (dispatch){
         dispatch({type: PAGINATE, payload: action})
+    }
+}
+
+export const resetFilters = ()=>{
+    return function (dispatch){
+        dispatch({type: RESET_FILTERS})
     }
 }
