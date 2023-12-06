@@ -20,7 +20,10 @@ const Home = (props) => {
     const [types, setTypes] = useState({})
 
     useEffect(()=>{
-        dispatch(getPokemons())
+        if(allPokemons.length === 0 ) {
+            console.log("get pokemons");
+            dispatch(getPokemons())
+        }
         getTypes()
     },[])
 
@@ -28,13 +31,11 @@ const Home = (props) => {
         axios.get('http://localhost:3001/types')
             .then(({data}) => {
                 setTypes(data)
-                console.log(data);
             })
     }
 
     const orderPokemons = (action)=>{
         dispatch(orderBy(action))
-        console.log(allPokemons);
     }
 
     const modifyPage = (action)=>{

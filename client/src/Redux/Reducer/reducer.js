@@ -24,7 +24,6 @@ function rootReducer (state=initialState, action){
         
         case RESET_FILTERS:
             let resetFilters = [...state.allPokemons]
-            console.log(resetFilters);
             return {...state,
                     backupPokemons: resetFilters,
                     clientPokemons: [...resetFilters].splice(0, ITEMS_PER_PAGE),
@@ -137,7 +136,6 @@ function rootReducer (state=initialState, action){
 
                 case "NEXT":
                     state.currentPage++
-                    console.log(state.backupPokemons);
                     if(state.currentPage*ITEMS_PER_PAGE >= state.backupPokemons.length){
                         state.currentPage--
                         return{...state}
