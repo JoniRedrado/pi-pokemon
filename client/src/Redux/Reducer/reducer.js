@@ -12,24 +12,42 @@ let initialState = {
 //DEFINE rootReducer
 
 function rootReducer (state=initialState, action){
-    const ITEMS_PER_PAGE = 12
+    const ITEMS_PER_PAGE = 5
     switch (action.type) {
         case GET_POKEMONS:
             //state.allPokemons = action.payload
-            return {...state, allPokemons: action.payload,  backupPokemons: action.payload,clientPokemons: [...action.payload].splice(0, ITEMS_PER_PAGE)}
+            return {...state, allPokemons: action.payload,  backupPokemons: action.payload, clientPokemons: [...action.payload].splice(0, ITEMS_PER_PAGE)}
         
         case FILTER_BY_TYPE:
-                const pokemonByType = state.allPokemons.filter( pokemon => {
-                    var bool = false
-                    pokemon.tipos.forEach(tipo => {
-                        if(tipo.type.name === action.payload) {
-                            bool = true
-                        }
-                    });
-                    return bool
-                })
+            /*const pokemonByType = state.allPokemons.filter( pokemon => {
+                var bool = false
+                pokemon.tipos.forEach(tipo => {
+                    if(tipo.type.name === action.payload) {
+                        bool = true
+                    }
+                });
+                return bool
+            })
             console.log(pokemonByType);           
-            return {...state, clientPokemons: pokemonByType}
+            return {...state, 
+                    backupPokemons: pokemonByType, 
+                    clientPokemons:[...state.backupPokemons].splice(0, ITEMS_PER_PAGE)
+                }*/
+            let pokemonByType = [...state.allPokemons].filter( pokemon => {
+                var bool = false
+                pokemon.tipos.forEach(tipo => {
+                    if(tipo.type.name === action.payload) {
+                        bool = true
+                    }
+                });
+                return bool
+            })
+
+            return { ...state,
+                    clientPokemons: [...pokemonByType].splice(0,ITEMS_PER_PAGE),
+                    backupPokemons: pokemonByType,
+                    currentPage: 0
+            }
         
         case ORDER_BY:
             var orderedPokemons = []
@@ -49,9 +67,12 @@ function rootReducer (state=initialState, action){
                         return 0;
                     };
 
-                    orderedPokemons = state.clientPokemons.sort(orderAZ)
-                    console.log(state.clientPokemons.sort(orderAZ));
-                    return {...state, clientPokemons: orderedPokemons};
+                    orderedPokemons = [...state.backupPokemons].sort(orderAZ)
+                    return {...state, 
+                            clientPokemons: [...orderedPokemons].splice(0,ITEMS_PER_PAGE),
+                            backupPokemons: orderedPokemons,
+                            currentPage: 0    
+                        };
                 
                 case "Z-A":
                     const orderZA = (a, b) => {
@@ -66,19 +87,30 @@ function rootReducer (state=initialState, action){
                         }
                         return 0;
                     };
-                    orderedPokemons = state.clientPokemons.sort(orderZA)
-                    console.log(state.clientPokemons.sort(orderZA));
-                    return {...state, clientPokemons: orderedPokemons};
+                    orderedPokemons = [...state.backupPokemons].sort(orderZA)
+                    return {...state, 
+                            clientPokemons: [...orderedPokemons].splice(0,ITEMS_PER_PAGE),
+                            backupPokemons: orderedPokemons,
+                            currentPage: 0    
+                        };
                 
                 case "ASC":
-                    orderedPokemons = state.clientPokemons.sort((a,b)=>a.ataque - b.ataque)
+                    orderedPokemons = [...state.backupPokemons].sort((a,b)=>a.ataque - b.ataque)
                     console.log(orderedPokemons);
-                    return {...state, clientPokemons: orderedPokemons};
+                    return {...state,
+                            clientPokemons: [...orderedPokemons].splice(0, ITEMS_PER_PAGE),
+                            backupPokemons: orderedPokemons,
+                            currentPage: 0
+                        };
 
                 case "DES":
-                    orderedPokemons = state.clientPokemons.sort((a,b)=>b.ataque - a.ataque)
+                    orderedPokemons = [...state.backupPokemons].sort((a,b)=>b.ataque - a.ataque)
                     console.log(orderedPokemons);
-                    return {...state, clientPokemons: orderedPokemons};
+                    return {...state,
+                            clientPokemons: [...orderedPokemons].splice(0, ITEMS_PER_PAGE),
+                            backupPokemons: orderedPokemons,
+                            currentPage: 0
+                        };
                 
                 default:
                     break;
@@ -104,7 +136,8 @@ function rootReducer (state=initialState, action){
 
                 case "NEXT":
                     state.currentPage++
-                    if(state.currentPage*ITEMS_PER_PAGE > state.backupPokemons.length){
+                    console.log(state.backupPokemons);
+                    if(state.currentPage*ITEMS_PER_PAGE >= state.backupPokemons.length){
                         state.currentPage--
                         return{...state}
                     } else {

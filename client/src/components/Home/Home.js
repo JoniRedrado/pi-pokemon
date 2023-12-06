@@ -57,11 +57,13 @@ const Home = (props) => {
             </article>
             <article>
                 <p>ORDER</p>
-                <button onClick={()=>orderPokemons("Z-A")}>A-Z</button>
+                <button onClick={()=>orderPokemons("A-Z")}>A-Z</button>
+                <button onClick={()=>orderPokemons("Z-A")}>Z-A</button>
             </article>
             <article>
                 <p>POWER</p>
                 <button onClick={()=>orderPokemons("ASC")}>ASC</button>
+                <button onClick={()=>orderPokemons("DES")}>DES</button>
             </article>
             <article>
                 <p>TYPE</p>
