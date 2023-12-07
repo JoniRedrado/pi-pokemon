@@ -1,11 +1,23 @@
 import React from 'react'
 
-const Filter = ({label}) => {
+import './Filter.css'
+
+import { useDispatch } from 'react-redux'
+import { orderBy } from '../../Redux/Actions/actions'
+
+const Filter = ({title, filters}) => {
+
+  const dispatch = useDispatch()
+
+  const orderPokemons = (action)=>{
+    dispatch(orderBy(action))
+  }
+
   return (
-    <div>
-        <p>{label}</p>
-        <button>{label}</button>
-    </div>
+    <article>
+        <p>{title}</p>
+        {filters.map(filter =><button onClick={()=>orderPokemons(filter)}>{filter}</button>)}
+    </article>
   )
 }
 

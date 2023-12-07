@@ -10,7 +10,9 @@ import './Home.css'
 import PokemonCard from '../PokemonCard/PokemonCard'
 //REDUX
 import { useDispatch, useSelector } from 'react-redux'
-import { getPokemons, filterPokemonType, orderBy, changePage, resetFilters } from '../../Redux/Actions/actions'
+import { getPokemons, filterPokemonType, changePage, resetFilters } from '../../Redux/Actions/actions'
+import Filter from '../Filter/Filter'
+import Paginate from '../Paginate/Paginate'
 
 const Home = (props) => {
 
@@ -34,10 +36,6 @@ const Home = (props) => {
             })
     }
 
-    const orderPokemons = (action)=>{
-        dispatch(orderBy(action))
-    }
-
     const modifyPage = (action)=>{
         dispatch(changePage(action))
     }
@@ -49,20 +47,9 @@ const Home = (props) => {
     <main>
         <Navbar />
         <div className='filter-container'>
-            <article>
-                <p>ORIGIN</p>
-                <button>API</button>
-            </article>
-            <article>
-                <p>ORDER</p>
-                <button onClick={()=>orderPokemons("A-Z")}>A-Z</button>
-                <button onClick={()=>orderPokemons("Z-A")}>Z-A</button>
-            </article>
-            <article>
-                <p>POWER</p>
-                <button onClick={()=>orderPokemons("ASC")}>ASC</button>
-                <button onClick={()=>orderPokemons("DES")}>DES</button>
-            </article>
+            <Filter title="ORIGIN" filters={["API", "DB"]}/>
+            <Filter title="ORDER" filters={["A-Z", "Z-A"]}/>
+            <Filter title="POWER" filters={["ASC", "DES"]}/>
             <article>
                 <p>TYPE</p>
                 <Select
@@ -85,9 +72,8 @@ const Home = (props) => {
                 :
                 <></>
             }
-            <button onClick={()=>modifyPage("PREV")}>PREV</button>
-            <button onClick={()=>modifyPage("NEXT")}>NEXT</button>
         </div>
+        <Paginate />
     </main>
     )
 }

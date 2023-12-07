@@ -10,7 +10,8 @@ let initialState = {
     //Contiene los pokemons a renderizar segun paginado
     clientPokemons: [],
     //Pagina actual del paginado
-    currentPage: 0
+    currentPage: 0,
+    itemsPerPage: 5
 }
 
 //DEFINE rootReducer
@@ -33,7 +34,9 @@ function rootReducer (state=initialState, action){
         case FILTER_BY_TYPE:
             let pokemonByType = [...state.allPokemons].filter( pokemon => {
                 var bool = false
-                pokemon.tipos.forEach(tipo => {
+                console.log(pokemon);
+                //Arreglo provisorio, tira error porque los pokemon de la db no vienen con los tipos asociados! VER ESO!
+                pokemon.tipos?.forEach(tipo => {
                     if(tipo.type.name === action.payload) {
                         bool = true
                     }
@@ -53,7 +56,7 @@ function rootReducer (state=initialState, action){
                 
                 case "A-Z":
                     const orderAZ = (a, b) => {
-                        const nombreA = a.nombre.toUpperCase(); // Convertir a mayúsculas para comparación sin distinción entre mayúsculas y minúsculas
+                        const nombreA = a.nombre.toUpperCase();
                         const nombreB = b.nombre.toUpperCase();
                     
                         if (nombreA < nombreB) {
