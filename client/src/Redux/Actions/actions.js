@@ -7,6 +7,7 @@ export const ORDER_BY = "ORDER_BY"
 export const SEARCH_POKEMON = "SEARCH_POKEMON"
 export const PAGINATE = "PAGINATE"
 export const RESET_FILTERS = "RESET_FILTERS"
+export const SELECT_PAGE = "SELECT_PAGE"
 
 //Actions
 
@@ -46,6 +47,13 @@ export const searchPokemon = (search) => {
 export const changePage = (action) => {
     return function (dispatch){
         dispatch({type: PAGINATE, payload: action})
+    }
+}
+
+export const selectPage = (action) => {
+    console.log(action);
+    return function (dispatch){
+        dispatch({type: SELECT_PAGE, payload: action})
     }
 }
 

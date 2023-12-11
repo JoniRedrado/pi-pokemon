@@ -5,7 +5,7 @@ module.exports = (req, res) => {
     var pokemons = [];
 
     axios
-        .get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=10")
+        .get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=60")
         .then(async ({ data }) => {
             async function getPokemonDetails(url) {
                 try {
@@ -13,8 +13,7 @@ module.exports = (req, res) => {
                         const pokemon = {
                             id: data.id,
                             nombre: data.name,
-                            imagen: data.sprites.other["official-artwork"]
-                                .front_default,
+                            imagen: data.sprites.other["official-artwork"].front_default,
                             vida: data.stats[0].base_stat,
                             ataque: data.stats[1].base_stat,
                             defensa: data.stats[2].base_stat,

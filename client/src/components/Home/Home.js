@@ -14,7 +14,7 @@ import { getPokemons, filterPokemonType, changePage, resetFilters } from '../../
 import Filter from '../Filter/Filter'
 import Paginate from '../Paginate/Paginate'
 
-const Home = (props) => {
+const Home = () => {
 
     var allPokemons = useSelector((state) => state.clientPokemons)
     const dispatch = useDispatch()

@@ -16,7 +16,7 @@ const Filter = ({title, filters}) => {
   return (
     <article>
         <p>{title}</p>
-        {filters.map(filter =><button onClick={()=>orderPokemons(filter)}>{filter}</button>)}
+        {filters.map(filter =><button onClick={()=>orderPokemons(filter)} key={filter}>{filter}</button>)}
     </article>
   )
 }

@@ -1,5 +1,5 @@
 //IMPORT action-types
-import {GET_POKEMONS, FILTER_BY_TYPE, ORDER_BY, SEARCH_POKEMON, PAGINATE, RESET_FILTERS} from '../Actions/actions'
+import {GET_POKEMONS, FILTER_BY_TYPE, ORDER_BY, SEARCH_POKEMON, PAGINATE, SELECT_PAGE, RESET_FILTERS} from '../Actions/actions'
 
 //DEFINE initialState
 let initialState = {
@@ -34,7 +34,7 @@ function rootReducer (state=initialState, action){
         case FILTER_BY_TYPE:
             let pokemonByType = [...state.allPokemons].filter( pokemon => {
                 var bool = false
-                console.log(pokemon);
+                //console.log(pokemon);
                 //Arreglo provisorio, tira error porque los pokemon de la db no vienen con los tipos asociados! VER ESO!
                 pokemon.tipos?.forEach(tipo => {
                     if(tipo.type.name === action.payload) {
@@ -149,6 +149,10 @@ function rootReducer (state=initialState, action){
                     break;
             }
             break;
+
+        case SELECT_PAGE:
+            state.currentPage = action.payload - 1
+            return{...state, clientPokemons: [...state.backupPokemons].splice(state.currentPage*ITEMS_PER_PAGE, ITEMS_PER_PAGE) }
 
         default:
             return {...state};
