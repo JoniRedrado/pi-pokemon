@@ -10,20 +10,20 @@ import './Home.css'
 import PokemonCard from '../PokemonCard/PokemonCard'
 //REDUX
 import { useDispatch, useSelector } from 'react-redux'
-import { getPokemons, filterPokemonType, changePage, resetFilters } from '../../Redux/Actions/actions'
+import { getPokemons, filterPokemonType, resetFilters } from '../../Redux/Actions/actions'
 import Filter from '../Filter/Filter'
 import Paginate from '../Paginate/Paginate'
 
 const Home = () => {
 
     var allPokemons = useSelector((state) => state.clientPokemons)
+    var backupPokemons = useSelector((state) => state.backupPokemons)
     const dispatch = useDispatch()
 
     const [types, setTypes] = useState({})
 
     useEffect(()=>{
         if(allPokemons.length === 0 ) {
-            console.log("get pokemons");
             dispatch(getPokemons())
         }
         getTypes()
@@ -34,10 +34,6 @@ const Home = () => {
             .then(({data}) => {
                 setTypes(data)
             })
-    }
-
-    const modifyPage = (action)=>{
-        dispatch(changePage(action))
     }
 
     //filtro db y api, traer todos los pokemons y filtrar si son de api o db de la misma manera que con los tipos.
@@ -66,7 +62,7 @@ const Home = () => {
             {
                 allPokemons ? allPokemons.map(pokemon => {
                     return (
-                        <PokemonCard img={pokemon.imagen} name={pokemon.nombre} types={pokemon.tipos} key={pokemon.id}/>
+                            <PokemonCard id={pokemon.id} img={pokemon.imagen} name={pokemon.nombre} types={pokemon.tipos} key={pokemon.id}/>
                     )
                 })
                 :

@@ -32,12 +32,12 @@ function rootReducer (state=initialState, action){
             }
 
         case FILTER_BY_TYPE:
-            let pokemonByType = [...state.allPokemons].filter( pokemon => {
+            let pokemonByType = [...state.backupPokemons].filter( pokemon => {
+                console.log(state.backupPokemons);
                 var bool = false
-                //console.log(pokemon);
                 //Arreglo provisorio, tira error porque los pokemon de la db no vienen con los tipos asociados! VER ESO!
                 pokemon.tipos?.forEach(tipo => {
-                    if(tipo.type.name === action.payload) {
+                    if(tipo.type?.name === action.payload) {
                         bool = true
                     }
                 });
@@ -52,20 +52,21 @@ function rootReducer (state=initialState, action){
         
         case ORDER_BY:
             var orderedPokemons = []
+            var pokemonsByOrigin = []
             switch (action.payload) {
                 
                 case "A-Z":
                     const orderAZ = (a, b) => {
-                        const nombreA = a.nombre.toUpperCase();
-                        const nombreB = b.nombre.toUpperCase();
-                    
+                        const nombreA = a.nombre.toUpperCase()
+                        const nombreB = b.nombre.toUpperCase()
+                        
                         if (nombreA < nombreB) {
-                            return -1;
+                            return -1
                         }
                         if (nombreA > nombreB) {
-                            return 1;
+                            return 1
                         }
-                        return 0;
+                        return 0
                     };
 
                     orderedPokemons = [...state.backupPokemons].sort(orderAZ)
@@ -77,16 +78,16 @@ function rootReducer (state=initialState, action){
                 
                 case "Z-A":
                     const orderZA = (a, b) => {
-                        const nombreA = a.nombre.toUpperCase(); // Convertir a mayúsculas para comparación sin distinción entre mayúsculas y minúsculas
-                        const nombreB = b.nombre.toUpperCase();
+                        const nombreA = a.nombre.toUpperCase()
+                        const nombreB = b.nombre.toUpperCase()
                     
                         if (nombreA > nombreB) {
-                            return -1;
+                            return -1
                         }
                         if (nombreA < nombreB) {
-                            return 1;
+                            return 1
                         }
-                        return 0;
+                        return 0
                     };
                     orderedPokemons = [...state.backupPokemons].sort(orderZA)
                     return {...state, 
@@ -97,7 +98,6 @@ function rootReducer (state=initialState, action){
                 
                 case "ASC":
                     orderedPokemons = [...state.backupPokemons].sort((a,b)=>a.ataque - b.ataque)
-                    //console.log(orderedPokemons);
                     return {...state,
                             clientPokemons: [...orderedPokemons].splice(0, ITEMS_PER_PAGE),
                             backupPokemons: orderedPokemons,
@@ -106,13 +106,28 @@ function rootReducer (state=initialState, action){
 
                 case "DES":
                     orderedPokemons = [...state.backupPokemons].sort((a,b)=>b.ataque - a.ataque)
-                    //console.log(orderedPokemons);
                     return {...state,
                             clientPokemons: [...orderedPokemons].splice(0, ITEMS_PER_PAGE),
                             backupPokemons: orderedPokemons,
                             currentPage: 0
                         };
                 
+                case "API":
+                    pokemonsByOrigin = [...state.allPokemons].filter(pokemon=> typeof pokemon.id === "number")
+                    return {...state,
+                            clientPokemons: [...pokemonsByOrigin].splice(0,ITEMS_PER_PAGE),
+                            backupPokemons: pokemonsByOrigin,
+                            currentPage: 0
+                    }
+                
+                case "DB":
+                    pokemonsByOrigin = [...state.allPokemons].filter(pokemon=> typeof pokemon.id !== "number")
+                    return {...state,
+                            clientPokemons: [...pokemonsByOrigin].splice(0,ITEMS_PER_PAGE),
+                            backupPokemons: pokemonsByOrigin,
+                            currentPage: 0
+                    }
+
                 default:
                     break;
             }

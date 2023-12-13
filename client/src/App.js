@@ -27,7 +27,7 @@ function App() {
         <Route path="/create">
           <CreatePokemon />
         </Route>
-        <Route path="/detail">
+        <Route path="/detail/:id">
           <PokemonDetail />
         </Route>
         <Route path="/about">
