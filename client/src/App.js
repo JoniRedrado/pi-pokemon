@@ -1,10 +1,5 @@
 //REACT
-//import { useState, useEffect } from 'react';
-//React-Router-Dom
-//import { Route, useNavigate, useLocation} from 'react-router-dom'
 import { Route, Switch} from 'react-router-dom';
-//Axios
-//import axios from 'axios'
 
 //Componentes
 import Landing from './components/Landing/Landing';

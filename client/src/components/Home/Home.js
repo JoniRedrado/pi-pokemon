@@ -5,14 +5,14 @@ import { useState } from 'react'
 import axios from 'axios'
 //COMPONENTS
 import Navbar from '../Navbar/Navbar'
+import Filter from '../Filter/Filter'
+import Paginate from '../Paginate/Paginate'
 //CSS
 import './Home.css'
 import PokemonCard from '../PokemonCard/PokemonCard'
 //REDUX
 import { useDispatch, useSelector } from 'react-redux'
 import { getPokemons, filterPokemonType, resetFilters } from '../../Redux/Actions/actions'
-import Filter from '../Filter/Filter'
-import Paginate from '../Paginate/Paginate'
 
 const Home = () => {
 
@@ -36,9 +36,6 @@ const Home = () => {
             })
     }
 
-    //filtro db y api, traer todos los pokemons y filtrar si son de api o db de la misma manera que con los tipos.
-    //Emprolijar y componentizar
-    //Falta implementar redirect al hacer click en card y filtrar por API/DB
     return (
     <main>
         <Navbar />
@@ -62,7 +59,7 @@ const Home = () => {
             {
                 allPokemons ? allPokemons.map(pokemon => {
                     return (
-                            <PokemonCard id={pokemon.id} img={pokemon.imagen} name={pokemon.nombre} types={pokemon.tipos} key={pokemon.id}/>
+                        <PokemonCard id={pokemon.id} img={pokemon.imagen} name={pokemon.nombre} types={pokemon.tipos} key={pokemon.id}/>
                     )
                 })
                 :

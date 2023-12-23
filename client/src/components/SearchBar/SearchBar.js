@@ -1,3 +1,4 @@
+//Libraries
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { searchPokemon } from '../../Redux/Actions/actions';
@@ -19,14 +20,14 @@ const SearchBar = () => {
         dispatch(searchPokemon(state))
     }
 
-  return (
-    <div>
-        <form onSubmit={handleSubmit}>
-            <input onChange={handleChange} type="text"/>
-            <input type='submit'/>
-        </form>
-    </div>
-  )
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
+                <input onChange={handleChange} type="text"/>
+                <input type='submit'/>
+            </form>
+        </div>
+    )
 }
 
 export default SearchBar

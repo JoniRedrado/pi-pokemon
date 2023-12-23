@@ -1,10 +1,10 @@
+//Libraries
 import React, { useEffect, useState } from "react";
-import Navbar from "../Navbar/Navbar";
-
 import axios from "axios";
-
 import { useParams } from "react-router-dom";
-
+//COMPONENTS
+import Navbar from "../Navbar/Navbar";
+//CSS
 import './PokemonDetail.css'
 
 const PokemonDetail = () => {

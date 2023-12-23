@@ -1,5 +1,8 @@
 import React from 'react'
+
+//CSS
 import './PokemonCard.css'
+//Libraries
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 
 const PokemonCard = ({id, img, name, types}) => {
