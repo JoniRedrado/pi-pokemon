@@ -5,7 +5,6 @@ module.exports = ( req, res ) => {
 
     const { name } = req.query
     const pokemonResults = []
-    console.log(`https://pokeapi.co/api/v2/pokemon/${name}`);
     axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
         .then( ({data})=>{
             const pokemon = {

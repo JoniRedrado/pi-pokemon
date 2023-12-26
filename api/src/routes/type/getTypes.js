@@ -4,7 +4,9 @@ const { Type } = require('../../db.js')
 
 module.exports = async ( req, res ) => {
 
-    const dbTypes = await Type.findAll()
+    const dbTypes = await Type.findAll({
+        attributes: ['nombre']
+    })
     
     if( dbTypes.length == 0 ) {
         
@@ -20,7 +22,9 @@ module.exports = async ( req, res ) => {
 
                 await Type.findAll();
                 
-                const dbTypes = await Type.findAll()
+                const dbTypes = await Type.findAll({
+                    attributes: ['nombre']
+                })
                 if (dbTypes.length === 0) {
                     console.log(dbTypes);
                     res.status(500).send("23 err")
