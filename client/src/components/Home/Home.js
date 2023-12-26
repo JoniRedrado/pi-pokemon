@@ -32,6 +32,7 @@ const Home = () => {
     const getTypes = ()=>{
         axios.get('http://localhost:3001/types')
             .then(({data}) => {
+                console.log(data);
                 setTypes(data)
             })
     }
@@ -47,7 +48,7 @@ const Home = () => {
                 <p>TYPE</p>
                 <Select
                     options={types}
-                    labelField="nombre" valueField="id"
+                    labelField="nombre" valueField="nombre"
                     onChange={(value) => dispatch(filterPokemonType(value[0].nombre))}
                 />
             </article>
