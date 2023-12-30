@@ -8,6 +8,7 @@ const getPokemonByName = require('./getPokemonByName');
 
 pokemonRouter.get('/', getPokemons)
 pokemonRouter.post('/', postNewPokemon)
+//pokemonRouter.post('/', (req)=>console.log(req.body))
 pokemonRouter.get('/:id', getPokemonById)
 pokemonRouter.get('/search/name', getPokemonByName)
 

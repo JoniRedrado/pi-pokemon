@@ -5,7 +5,7 @@ module.exports = (req, res) => {
     var pokemons = [];
 
     axios
-        .get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=10")
+        .get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=30")
         .then(async ({ data }) => {
             async function getPokemonDetails(url) {
                 try {
@@ -46,12 +46,10 @@ module.exports = (req, res) => {
                     await dbPokemons.forEach((dbPokemon) => {
                         Pokemon.findOne({where: {id: dbPokemon.id}})
                             .then(dbPokemon=>{
-                                //console.log(dbPokemon);
                                 dbPokemon.getTypes()
                                     .then(types=>{
                                         dbPokemon.dataValues.tipos = types
                                         pokemons.push(dbPokemon)
-                                        console.log(pokemons);
                                     })
                                     .catch(error=>{
                                         console.log("No se encontraron los tipos");

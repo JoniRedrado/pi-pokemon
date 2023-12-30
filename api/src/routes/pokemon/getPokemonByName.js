@@ -3,7 +3,9 @@ const { Pokemon } = require('../../db')
 
 module.exports = ( req, res ) => {
 
-    const { name } = req.query
+    //const { name } = req.query
+    const name = req.query.name.toLowerCase()
+    console.log(name);
     const pokemonResults = []
     axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
         .then( ({data})=>{
@@ -20,24 +22,35 @@ module.exports = ( req, res ) => {
                 tipos: data.types
             }
             pokemonResults.push(pokemon)
+            console.log(pokemonResults, 23);
 
-            Pokemon.findAll({where: {nombre: name}})
+            Pokemon.findOne({where: {nombre: name.toUpperCase()}})
                 .then( dbPokemon => {
-                    if (dbPokemon.length > 0) {
-                        dbPokemon.forEach(pokemon => {
-                            pokemonResults.push(pokemon)
-                        });
+                    console.log(dbPokemon);
+                    if (dbPokemon !== null) {
+                        
+                        pokemonResults.push(dbPokemon)
                     }
                     res.status(200).json(pokemonResults)
                 })
         })
+
         .catch( error => {
-            Pokemon.findAll({where: {nombre: name}})
+            console.log(error);
+            Pokemon.findOne({where: {nombre: name.toUpperCase()}})
                 .then( dbPokemon => {
-                    if(dbPokemon.length !== 0){
-                        pokemonResults.push(dbPokemon)
-                        console.log(dbPokemon);
-                        res.status(200).json(pokemonResults)
+                    if(dbPokemon !== null){
+                        dbPokemon.getTypes()
+                            .then(types=>{
+                                dbPokemon.dataValues.tipos = types
+                            })
+                            .then(()=>{
+
+                                pokemonResults.push(dbPokemon)
+                                console.log(pokemonResults, 39);
+                                res.status(200).json(pokemonResults)
+                            })
+
                     } else {
                         res.status(400).send('No se encontro ningun pokemon que coincida con el nombre ingresado.')
                     }
@@ -47,5 +60,5 @@ module.exports = ( req, res ) => {
                 })
         })
     
-    //res.status(200).send("Ok")
+
 }

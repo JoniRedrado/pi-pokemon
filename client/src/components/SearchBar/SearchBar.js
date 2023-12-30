@@ -18,12 +18,13 @@ const SearchBar = () => {
         e.preventDefault()
         console.log("submit");
         dispatch(searchPokemon(state))
+        setState('')
     }
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input onChange={handleChange} type="text"/>
+                <input onChange={handleChange} type="text" value={state} />
                 <input type='submit'/>
             </form>
         </div>

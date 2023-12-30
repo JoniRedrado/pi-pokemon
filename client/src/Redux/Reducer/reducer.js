@@ -11,13 +11,13 @@ let initialState = {
     clientPokemons: [],
     //Pagina actual del paginado
     currentPage: 0,
-    itemsPerPage: 5
+    itemsPerPage: 12
 }
 
 //DEFINE rootReducer
 
 function rootReducer (state=initialState, action){
-    const ITEMS_PER_PAGE = 5
+    const ITEMS_PER_PAGE = 12
     switch (action.type) {
 
         case GET_POKEMONS:
@@ -32,15 +32,21 @@ function rootReducer (state=initialState, action){
             }
 
         case FILTER_BY_TYPE:
-            let pokemonByType = [...state.backupPokemons].filter( pokemon => {
-                console.log(state.backupPokemons);
+            let pokemonByType = [...state.allPokemons].filter( pokemon => {
                 var bool = false
-                //Arreglo provisorio, tira error porque los pokemon de la db no vienen con los tipos asociados! VER ESO!
-                pokemon.tipos?.forEach(tipo => {
-                    if(tipo.type?.name === action.payload) {
-                        bool = true
-                    }
-                });
+                if (pokemon.id <= 2000) {
+                    pokemon.tipos.forEach(tipo => {
+                        if(tipo.type.name === action.payload) {
+                            bool = true
+                        }
+                    });
+                } else {
+                    pokemon.tipos.forEach(tipo => {
+                        if(tipo.nombre === action.payload){
+                            bool = true
+                        }
+                    })
+                }
                 return bool
             })
 
@@ -135,7 +141,6 @@ function rootReducer (state=initialState, action){
         
         case SEARCH_POKEMON:
             const searchPokemons = action.payload
-            
             return {...state, 
                     clientPokemons: [...searchPokemons].splice(0, ITEMS_PER_PAGE),
                     backupPokemons: searchPokemons,

@@ -19,5 +19,6 @@
 }
 
 .types-container{
-    background-color: var();
+    display: flex;
+    justify-content: space-evenly;
 }

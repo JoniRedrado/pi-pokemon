@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
     },
     imagen: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     vida: {
       type: DataTypes.INTEGER,
@@ -32,11 +32,15 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     altura: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    altura: {
+      type: DataTypes.STRING,
       allowNull: true,
     },
     peso: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.STRING,
       allowNull: true,
     },
   });

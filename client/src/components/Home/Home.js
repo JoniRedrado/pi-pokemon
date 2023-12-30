@@ -1,6 +1,5 @@
 //LIBRARIES
 import React, { useEffect } from 'react'
-import {Select} from 'react-dropdown-select'
 import { useState } from 'react'
 import axios from 'axios'
 //COMPONENTS
@@ -20,7 +19,9 @@ const Home = () => {
     var backupPokemons = useSelector((state) => state.backupPokemons)
     const dispatch = useDispatch()
 
-    const [types, setTypes] = useState({})
+    const [ types, setTypes] = useState({})
+    const [ typeFilter, setTypeFilter ] = useState()
+    const typesFilter = ["normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electic", "psychic", "ice", "dragon", "dark", "fairy", "unknown", "shadow"]
 
     useEffect(()=>{
         if(allPokemons.length === 0 ) {
@@ -32,9 +33,18 @@ const Home = () => {
     const getTypes = ()=>{
         axios.get('http://localhost:3001/types')
             .then(({data}) => {
-                console.log(data);
                 setTypes(data)
             })
+    }
+
+    const filterByType = (e)=>{
+        setTypeFilter(e.target.value)
+        dispatch(filterPokemonType(e.target.value))
+    }
+
+    const resetAllFilters = () => {
+        dispatch(resetFilters())
+        setTypeFilter("")
     }
 
     return (
@@ -46,14 +56,18 @@ const Home = () => {
             <Filter title="POWER" filters={["ASC", "DES"]}/>
             <article>
                 <p>TYPE</p>
-                <Select
-                    options={types}
-                    labelField="nombre" valueField="nombre"
-                    onChange={(value) => dispatch(filterPokemonType(value[0].nombre))}
-                />
+                <select id="opciones" value={typeFilter} onChange={filterByType}>
+                    <option value="" >Selecciona...</option>
+                    {   typesFilter?.map(type => (
+                            <option key={type} value={type}>
+                                {type}
+                            </option>
+                        ))
+                    }   
+                </select> 
             </article>
             <article>
-                <button onClick={()=>dispatch(resetFilters())}>RESET</button>
+                <button onClick={resetAllFilters}>RESET</button>
             </article>
         </div>
         <div className='card-container'>

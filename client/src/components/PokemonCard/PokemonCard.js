@@ -20,14 +20,14 @@ const PokemonCard = ({id, img, name, types}) => {
                       )
                   })}
           </div>
-          <Link to={`/detail/${id}`} className={"link"}>SEE MORE</Link>
+          <Link to={`/detail/${id}`} className={"link"}>LEARN MORE</Link>
       </div>
     )
   } else {
     return (
       <div className='card'>
           <img src={img} alt='pokemon-img'/>
-          <h3>{name.toUpperCase()}</h3>
+          <h3>{name?.toUpperCase()}</h3>
           <div className='types-container'>
               {types?.map(type => {
                   return (
@@ -35,7 +35,7 @@ const PokemonCard = ({id, img, name, types}) => {
                       )
                   })}
           </div>
-          <Link to={`/detail/${id}`} className={"link"}>SEE MORE</Link>
+          <Link to={`/detail/${id}`} className={"link"}>LEARN MORE</Link>
       </div>
     )
 

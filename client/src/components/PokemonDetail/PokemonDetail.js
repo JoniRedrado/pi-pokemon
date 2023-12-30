@@ -57,11 +57,11 @@ const PokemonDetail = () => {
                   <p>{pokemon.velocidad}</p>
                 </div>
                 <div>
-                  <label>HEIGTH</label>
+                  <label>HEIGHT</label>
                   <p>{pokemon.altura}</p>
                 </div>
                 <div>
-                  <label>WEIGTH</label>
+                  <label>WEIGHT</label>
                   <p>{pokemon.peso}</p>
                 </div>
               </div>
@@ -98,9 +98,9 @@ const PokemonDetail = () => {
                 <p>{pokemon.defensa}</p>
                 <label>SPEED</label>
                 <p>{pokemon.velocidad}</p>
-                <label>HEIGTH</label>
+                <label>HEIGHT</label>
                 <p>{pokemon.altura}</p>
-                <label>WEIGTH</label>
+                <label>WEIGHT</label>
                 <p>{pokemon.peso}</p>
               </div>
             </div>
