@@ -41,3 +41,23 @@ main{
     justify-content: center;
     align-items: center;
 }
+
+/* Estilos para el elemento select */
+select {
+    padding: 8px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid var(--gris); /* Borde */
+    background-color: var(--blanco); /* Color de fondo */
+    color: var(--gris); /* Color del texto */
+  }
+  
+  /* Estilos al pasar el cursor por encima del select */
+  select:hover {
+    border-color: var(--bordo); /* Cambia el color del borde al pasar el cursor */
+  }
+  
+  /* Estilos cuando el select está enfocado */
+  select:focus {
+    outline: none; /* Quita el contorno al enfocar */
+    box-shadow: 0 0 5px rgba(153, 1, 0, 0.5); /* Sombra al enfocar */
+  }

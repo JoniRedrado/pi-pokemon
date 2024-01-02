@@ -2,6 +2,8 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { searchPokemon } from '../../Redux/Actions/actions';
+//CSS
+import './SearchBar.css'
 
 
 const SearchBar = () => {

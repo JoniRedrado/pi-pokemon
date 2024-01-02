@@ -1,0 +1,30 @@
+/* Estilos para el formulario */
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  input[type='text'] {
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid var(--gris);
+    border-radius: 5px;
+    background-color: var(--blanco);
+    color: var(--gris);
+    width: auto;
+  }
+  
+  input[type='submit'] {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--bordo);
+    color: var(--blanco);
+    cursor: pointer;
+  }
+  
+  input[type='submit']:hover {
+    background-color: var(--rojo);
+  }

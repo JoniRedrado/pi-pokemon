@@ -1,5 +1,5 @@
 const axios = require('axios')
-const {Pokemon, } = require('../../db.js')
+const {Pokemon } = require('../../db.js')
 
 module.exports = ( req, res ) => {
     

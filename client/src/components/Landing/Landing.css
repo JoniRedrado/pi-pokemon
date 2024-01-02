@@ -1,0 +1,38 @@
+.landing-container {
+    /* Establecer la imagen como fondo */
+    background-image: url('https://wallpapercave.com/wp/wp2553725.jpg');
+    background-size: cover; /* Hace que la imagen cubra todo el fondo */
+    background-position: center; /* Centra la imagen en el fondo */
+    height: 100vh; /* Establece la altura del contenedor al 100% de la altura visible */
+    display: flex; /* Usa el sistema de cajas flexibles para centrar contenido */
+    flex-direction: column; /* Alinea el contenido verticalmente */
+    justify-content: center; /* Centra verticalmente el contenido */
+    align-items: center; /* Centra horizontalmente el contenido */
+    text-align: center; /* Centra el texto horizontalmente */
+  }
+  
+  /* Estilos para el texto */
+  .landing-container h1 {
+    color: var(--blanco); /* Color del texto */
+    font-size: 2em; /* Tamaño del texto */
+    margin-bottom: 20px; /* Espaciado inferior */
+    background-color: rgba(0, 0, 0, 0.7); /* Cambia el último valor (0.5) para ajustar la opacidad */
+    padding: 10px; /* Añade un poco de espacio alrededor del texto */
+  }
+  
+  /* Estilos para el botón */
+  .landing-container button {
+    padding: 10px 20px; /* Espaciado del botón */
+    font-size: 1.2em; /* Tamaño del texto del botón */
+    background-color: var(--blanco); /* Color de fondo del botón */
+    border: none; /* Sin borde */
+    border-radius: 5px;
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    /* Otros estilos que desees aplicar al botón */
+  }
+
+  .landing-container button:hover {
+    background-color: var(--gris);
+    color: var(--blanco);
+  }
+  

@@ -31,7 +31,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    altura: {
+    velocidad: {
       type: DataTypes.STRING,
       allowNull: true,
     },

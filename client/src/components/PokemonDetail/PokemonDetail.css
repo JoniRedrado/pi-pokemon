@@ -1,4 +1,4 @@
-.pokemon-detail{
+/*.pokemon-detail{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,4 +43,94 @@
     width: 80%;
     align-items: center;
     margin: 0.5rem;
+}*/
+/* Estilos ajustados */
+.pokemon-detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*height: 100vh;*/
+    padding: 3rem;
+    background-color: var(--crema);
+  }
+  
+  .card-detail {
+    background-color: var(--blanco);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.12);
+    text-align: center;
+    width: 70%; /* Ancho ajustado */
+    max-width: 600px; /* Máximo ancho */
+  }
+  
+  .card-detail img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+  
+  .card-detail h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: var(--rojo);
+  }
+  
+  .detail-types-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+  }
+  
+  .detail-types-container p {
+    background-color: var(--bordo);
+    color: var(--blanco);
+    padding: 6px 12px;
+    border-radius: 5px;
+    margin: 0 6px;
+  }
+  
+  /* Estilos para mostrar las estadísticas en dos columnas con valores alineados */
+/* Estilos para mostrar las estadísticas centradas verticalmente */
+.stats-container {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 15px;
+}
+
+.stats-container div {
+display: flex;
+flex-direction: column;
+align-items: center; /* Centra el contenido verticalmente */
+text-align: center;
+}
+
+.stats-container label {
+font-weight: bold;
+margin-bottom: 8px;
+color: var(--gris);
+}
+
+.stats-container p {
+    margin: 0;
+    color: var(--gris);
+}
+
+.pokemon-detail button {
+    background-color: var(--gris);
+    color: var(--blanco);
+    border: solid 1px var(--gris);
+    border-radius: 5px;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.pokemon-detail button:hover{
+    background-color: var(--rojo);
+    border: solid 1px var(--rojo);
 }

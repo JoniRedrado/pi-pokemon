@@ -1,4 +1,4 @@
-.new-pokemon-container {
+/*.new-pokemon-container {
     background-color: var(--crema);
     display: flex;
     flex-direction: column;
@@ -54,4 +54,90 @@
     color: var(--rojo);
     border: solid 2px var(--rojo);
     cursor: pointer;
-}
+}*/
+
+/* Estilos para el componente NewPokemonContainer */
+.new-pokemon-container {
+    width: 40%;
+    margin: auto;
+    padding: 15px;
+    background-color: var(--blanco);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: var(--gris);
+  }
+  
+  .new-pokemon-container h3 {
+    color: var(--rojo);
+    font-size: 1.5em;
+    margin-bottom: 15px;
+  }
+  
+  .new-pokemon-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .new-pokemon-container label {
+    display: block;
+    margin-bottom: 3px;
+    color: var(--gris);
+  }
+  
+  .new-pokemon-container input[type='text'],
+  .new-pokemon-container input[type='number'],
+  .new-pokemon-container select {
+    width: 80%;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid var(--gris);
+    border-radius: 5px;
+  }
+  
+  .new-pokemon-container input[type='button'] {
+    width: 50%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: var(--bordo);
+    color: var(--blanco);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .attributes-container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .errors-p {
+    color: var(--rojo);
+    margin-top: 5px;
+  }
+  
+
+
+
+/* Estilos para el elemento select */
+select {
+    padding: 8px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid var(--gris); /* Borde */
+    background-color: var(--blanco); /* Color de fondo */
+    color: var(--gris); /* Color del texto */
+  }
+  
+  /* Estilos al pasar el cursor por encima del select */
+  select:hover {
+    border-color: var(--bordo); /* Cambia el color del borde al pasar el cursor */
+  }
+  
+  /* Estilos cuando el select está enfocado */
+  select:focus {
+    outline: none; /* Quita el contorno al enfocar */
+    box-shadow: 0 0 5px rgba(153, 1, 0, 0.5); /* Sombra al enfocar */
+  }

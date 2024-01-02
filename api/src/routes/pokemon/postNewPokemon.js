@@ -4,7 +4,7 @@ const {Pokemon, Type} = require('../../db.js')
 
 module.exports = ( req, res ) => {
     
-    var {nombre, imagen, vida, ataque, defensa, altura, peso, tipos} = req.body;
+    var {nombre, imagen, vida, ataque, defensa, velocidad, altura, peso, tipos} = req.body;
 
     //IMAGE - LA URL DEBE LLEVAR A UNA IMAGEN
     async function esURLImagen(url) {
@@ -36,6 +36,7 @@ module.exports = ( req, res ) => {
                 vida: vida,
                 ataque: ataque,
                 defensa: defensa,
+                velocidad: velocidad,
                 altura: altura,
                 peso: peso
             }).then(nuevoPokemon => {
