@@ -9,7 +9,6 @@ const deletePokemon = require('./deletePokemon');
 
 pokemonRouter.get('/', getPokemons)
 pokemonRouter.post('/', postNewPokemon)
-//pokemonRouter.post('/', (req)=>console.log(req.body))
 pokemonRouter.get('/:id', getPokemonById)
 pokemonRouter.get('/search/name', getPokemonByName)
 pokemonRouter.delete('/', deletePokemon)

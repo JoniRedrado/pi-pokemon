@@ -3,15 +3,13 @@ const axios = require('axios')
 const { Type } = require('../../db.js')
 
 module.exports = async ( req, res ) => {
-
+    //Find all pokemon types from the db
     const dbTypes = await Type.findAll({
         attributes: ['nombre']
     })
-    
+    //If db is empty get types from the API and save into db
     if( dbTypes.length == 0 ) {
-        
-        console.log("db vacia");
-        
+
         axios.get('https://pokeapi.co/api/v2/type/')
             .then( async ({data}) => {
                 const apiTypes = data.results
@@ -26,22 +24,19 @@ module.exports = async ( req, res ) => {
                     attributes: ['nombre']
                 })
                 if (dbTypes.length === 0) {
-                    console.log(dbTypes);
-                    res.status(500).send("23 err")
+                    res.status(500).send("We couldn't get the requested types")
                 } else {
                     res.status(200).send(dbTypes)
                 }
 
             })
             .catch(error => {
-                console.log("30");
-                res.status(500).send('Errors')
+                res.status(500).send("We couldn't get the requested types")
             })
 
     } else {
-        console.log("Ya hay datos");
+        //If types are already on the db send types
         res.status(200).send(dbTypes)
     }
-
 
 }

@@ -22,3 +22,21 @@
     display: flex;
     justify-content: space-evenly;
 }
+
+
+/* Estilos para pantallas pequeñas (teléfonos) */
+@media only screen and (max-width: 600px) {
+    /* Estilos para pantallas de hasta 600px de ancho */
+    .card{
+        width: 80%;
+        font-size: 1.5rem;
+    }
+}
+
+/* Estilos para pantallas medianas (tabletas) */
+@media only screen and (min-width: 601px) and (max-width: 1000px) {
+    /* Estilos para pantallas de 601px a 1024px de ancho */
+    .card{
+        width: 35%;
+    }
+}

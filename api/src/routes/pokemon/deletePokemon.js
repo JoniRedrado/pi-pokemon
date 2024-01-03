@@ -5,11 +5,10 @@ module.exports = ( req, res ) => {
     console.log(req.body);
     Pokemon.destroy({where: {id: id}})
         .then(delPokemon =>{
-            console.log(delPokemon, "Pokemon eliminado");
-            res.status(200).send("eliminado con exito")
+            res.status(200).send("Pokemon deleted succesfully")
         })
         .catch(error=>{
             console.error(error);
-            res.status(500).send("No se pudo eliminar el Pokemon")
+            res.status(500).send("Error when deleting the requested pokemon")
         })
 }

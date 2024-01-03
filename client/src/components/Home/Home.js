@@ -67,7 +67,7 @@ const Home = () => {
                 </select> 
             </article>
             <article>
-                <button onClick={resetAllFilters}>RESET</button>
+                <button onClick={resetAllFilters} className='reset-filters'>RESET</button>
             </article>
         </div>
         <div className='card-container'>

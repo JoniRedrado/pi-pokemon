@@ -8,7 +8,7 @@ main{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 70%;
+    width: 100%;
 }
 
 .filter-container article{
@@ -49,15 +49,50 @@ select {
     border: 1px solid var(--gris); /* Borde */
     background-color: var(--blanco); /* Color de fondo */
     color: var(--gris); /* Color del texto */
-  }
-  
-  /* Estilos al pasar el cursor por encima del select */
-  select:hover {
+}
+
+/* Estilos al pasar el cursor por encima del select */
+select:hover {
     border-color: var(--bordo); /* Cambia el color del borde al pasar el cursor */
-  }
-  
-  /* Estilos cuando el select está enfocado */
-  select:focus {
+}
+
+/* Estilos cuando el select está enfocado */
+select:focus {
     outline: none; /* Quita el contorno al enfocar */
     box-shadow: 0 0 5px rgba(153, 1, 0, 0.5); /* Sombra al enfocar */
-  }
+}
+
+
+/* Estilos para pantallas pequeñas (teléfonos) */
+@media only screen and (max-width: 600px) {
+    /* Estilos para pantallas de hasta 600px de ancho */
+    .filter-container{
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .filter-container article{
+        width: 35%;
+    }
+
+    .filter-container button {
+        width: 25%;
+        font-size: 1.5rem;
+    }
+
+    .reset-filters{
+        min-width: fit-content;
+    }
+}
+
+/* Estilos para pantallas medianas (tabletas) */
+@media only screen and (min-width: 601px) and (max-width: 1000px) {
+    /* Estilos para pantallas de 601px a 1024px de ancho */
+    .filter-container{
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+}

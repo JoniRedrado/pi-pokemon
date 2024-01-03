@@ -3,7 +3,6 @@ const { Pokemon } = require('../../db')
 
 module.exports = ( req, res ) => {
 
-    //const { name } = req.query
     const name = req.query.name.toLowerCase()
     console.log(name);
     const pokemonResults = []
@@ -22,7 +21,6 @@ module.exports = ( req, res ) => {
                 tipos: data.types
             }
             pokemonResults.push(pokemon)
-            console.log(pokemonResults, 23);
 
             Pokemon.findOne({where: {nombre: name.toUpperCase()}})
                 .then( dbPokemon => {
@@ -36,7 +34,6 @@ module.exports = ( req, res ) => {
         })
 
         .catch( error => {
-            console.log(error);
             Pokemon.findOne({where: {nombre: name.toUpperCase()}})
                 .then( dbPokemon => {
                     if(dbPokemon !== null){
@@ -52,11 +49,11 @@ module.exports = ( req, res ) => {
                             })
 
                     } else {
-                        res.status(400).send('No se encontro ningun pokemon que coincida con el nombre ingresado.')
+                        res.status(404).send("Couldn't find a Pokemon with that name.")
                     }
                 })
                 .catch(error => {
-                    console.error(error);
+                    res.status(500).send("Error when searching for the requested pokemon")
                 })
         })
     

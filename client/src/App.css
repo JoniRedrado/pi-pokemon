@@ -11,6 +11,7 @@
   text-align: center;
   background-color: var(--crema);
   min-height: 100vh;
+  min-width: fit-content;
 }
 
 .App-logo {

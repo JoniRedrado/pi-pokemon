@@ -46,27 +46,27 @@ module.exports = ( req, res ) => {
                             if(types.length === tipos.length){
                                 nuevoPokemon.addTypes(types)
                                     .then(()=>{
-                                        console.log('Creado con exito');
+                                        console.log('Created succesfully.');
                                     })
                                     .catch(error=>{
-                                        console.error('Error al agregar tipos');
+                                        console.error('Error while adding types.');
                                     })
                             } else { 
-                                console.log('No se encontraron los tipos');
+                                console.log("Couldn't find types.");
                             }
                         })
                         .catch(error => {
-                            console.error('Error al buscar los tipos');
+                            console.error('Error while searching the types.');
                         })
                 } else { 
-                    console.log('No se pudo crear el Pokemon');
+                    console.log("Couldn't create Pokemon.");
                 }
             })
             .catch(error => {
                 console.log(error);
             })
         
-            res.status(200).send("Ok")
+            res.status(200).send("Pokemon created succesfully.")
         })
 
 

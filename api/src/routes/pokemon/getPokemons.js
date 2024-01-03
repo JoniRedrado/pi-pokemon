@@ -52,7 +52,7 @@ module.exports = (req, res) => {
                                         pokemons.push(dbPokemon)
                                     })
                                     .catch(error=>{
-                                        console.log("No se encontraron los tipos");
+                                        console.error("Couldn't find pokemon types.");
                                     })
                             })
                             .catch(error=>{
@@ -67,6 +67,6 @@ module.exports = (req, res) => {
         })
         .catch((error) => {
             console.error(error);
-            res.status(500).send("Error al obtener los pokemons");
+            res.status(500).send("Error when searching for the requested pokemons");
         });
 };
