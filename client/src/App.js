@@ -6,7 +6,6 @@ import Landing from './components/Landing/Landing';
 import Home from './components/Home/Home';
 import CreatePokemon from './components/CreatePokemon/CreatePokemon';
 import PokemonDetail from './components/PokemonDetail/PokemonDetail';
-import About from './components/About/About'
 
 //CSS
 import './App.css';
@@ -24,9 +23,6 @@ function App() {
         </Route>
         <Route path="/detail/:id">
           <PokemonDetail />
-        </Route>
-        <Route path="/about">
-          <About />
         </Route>
         <Route path="/">
           <Landing />

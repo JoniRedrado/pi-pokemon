@@ -17,6 +17,7 @@ form {
   }
   
   input[type='submit'] {
+    min-width: fit-content;
     padding: 16px;
     border: none;
     border-radius: 5px;
@@ -28,3 +29,26 @@ form {
   input[type='submit']:hover {
     background-color: var(--rojo);
   }
+
+  @media only screen and (max-width: 600px) {
+    div{
+      max-width: 100%;
+    }
+    input[type='submit']{
+      max-width: 30%;
+    }
+    input[type='text']{
+      max-width: 40%;
+    }
+  }
+
+  
+@media only screen and (min-width: 601px) and (max-width: 1000px) {
+
+  input[type='submit']{
+    max-width: 30%;
+  }
+  input[type='text']{
+    max-width: 40%;
+  }
+}

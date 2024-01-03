@@ -18,8 +18,6 @@ const Navbar = () => {
             <Link to="/create" className="link">CREATE POKEMON</Link>
         </ul>
         <SearchBar />
-        {/*<input type='text'/>
-        <button>🔍</button>*/}
     </nav>
   )
 }

@@ -27,13 +27,13 @@ const Paginate = () => {
 
   return (
     <footer>
-      <button onClick={()=>modifyPage("PREV")}>PREV</button>
+      <button onClick={()=>modifyPage("PREV")}>{'<'}</button>
       {
         pages.map(page=>{
           return <button onClick={()=>SelectPageNumber(page)} key={page} className={currentPage+1 === page ? 'current-page' : ''} >{page}</button>
         })
       }      
-      <button onClick={()=>modifyPage("NEXT")}>NEXT</button>
+      <button onClick={()=>modifyPage("NEXT")}>{'>'}</button>
     </footer>
   )
 }

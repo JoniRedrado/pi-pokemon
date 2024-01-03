@@ -2,6 +2,7 @@ main{
     background-color: var(--crema);
     display: flex;
     flex-direction: column;
+    max-width: 100vw;
 }
 
 .filter-container{
@@ -42,30 +43,25 @@ main{
     align-items: center;
 }
 
-/* Estilos para el elemento select */
 select {
-    padding: 8px; /* Espaciado interno */
-    border-radius: 5px; /* Bordes redondeados */
-    border: 1px solid var(--gris); /* Borde */
-    background-color: var(--blanco); /* Color de fondo */
-    color: var(--gris); /* Color del texto */
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid var(--gris);
+    background-color: var(--blanco); 
+    color: var(--gris);
 }
 
-/* Estilos al pasar el cursor por encima del select */
 select:hover {
-    border-color: var(--bordo); /* Cambia el color del borde al pasar el cursor */
+    border-color: var(--bordo); 
 }
 
-/* Estilos cuando el select está enfocado */
 select:focus {
-    outline: none; /* Quita el contorno al enfocar */
-    box-shadow: 0 0 5px rgba(153, 1, 0, 0.5); /* Sombra al enfocar */
+    outline: none; 
+    box-shadow: 0 0 5px rgba(153, 1, 0, 0.5);
 }
 
 
-/* Estilos para pantallas pequeñas (teléfonos) */
 @media only screen and (max-width: 600px) {
-    /* Estilos para pantallas de hasta 600px de ancho */
     .filter-container{
         flex-wrap: wrap;
         align-items: center;
@@ -77,9 +73,10 @@ select:focus {
         width: 35%;
     }
 
-    .filter-container button {
-        width: 25%;
-        font-size: 1.5rem;
+    .filter-container article button {
+        width: 30%;
+        font-size: 0.8rem;
+        padding: 0.8rem 0;
     }
 
     .reset-filters{
@@ -87,9 +84,7 @@ select:focus {
     }
 }
 
-/* Estilos para pantallas medianas (tabletas) */
 @media only screen and (min-width: 601px) and (max-width: 1000px) {
-    /* Estilos para pantallas de 601px a 1024px de ancho */
     .filter-container{
         align-items: center;
         justify-content: center;

@@ -1,55 +1,7 @@
-/*.pokemon-detail{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.card-detail{
-    margin: 2rem;
-    width: 35%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 2rem;
-    background-color: var(--crema);
-    border: solid 3px var(--bordo);
-    border-radius: 5px;
-    color: var(--rojo);
-    font-weight: bold;
-    padding: 1rem;
-}
-
-.card-detail img {
-    border: solid 1px white;
-    border-radius: 5px;
-    background-color: var(--gris);
-    max-width: 80%;
-}
-
-.detail-types-container{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 80%;
-    margin: 0.5rem;
-}
-
-.stats-container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    width: 80%;
-    align-items: center;
-    margin: 0.5rem;
-}*/
-/* Estilos ajustados */
 .pokemon-detail {
     display: flex;
     justify-content: center;
     align-items: center;
-    /*height: 100vh;*/
     padding: 3rem;
     background-color: var(--crema);
   }
@@ -60,8 +12,8 @@
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.12);
     text-align: center;
-    width: 70%; /* Ancho ajustado */
-    max-width: 600px; /* Máximo ancho */
+    width: 70%;
+    max-width: 600px;
   }
   
   .card-detail img {
@@ -92,8 +44,6 @@
     margin: 0 6px;
   }
   
-  /* Estilos para mostrar las estadísticas en dos columnas con valores alineados */
-/* Estilos para mostrar las estadísticas centradas verticalmente */
 .stats-container {
     display: flex;
     justify-content: space-evenly;
@@ -103,7 +53,7 @@
 .stats-container div {
 display: flex;
 flex-direction: column;
-align-items: center; /* Centra el contenido verticalmente */
+align-items: center;
 text-align: center;
 }
 
@@ -133,4 +83,14 @@ color: var(--gris);
 .pokemon-detail button:hover{
     background-color: var(--rojo);
     border: solid 1px var(--rojo);
+}
+
+
+@media only screen and (max-width: 600px) {
+  .stats-container{
+    flex-wrap: wrap;
+  }
+  .stats-container div{
+    width: 25%;
+  }
 }

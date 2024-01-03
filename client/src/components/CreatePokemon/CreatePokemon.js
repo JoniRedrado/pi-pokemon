@@ -78,6 +78,9 @@ const CreatePokemon = () => {
         peso: '',
         tipos: []
       })
+      alert('Pokemon created succesfully')
+    } else {
+      alert('Please check te information about the pokemon')
     }
   }
 
@@ -134,12 +137,6 @@ const CreatePokemon = () => {
               {errors.peso ? <p className="errors-p">{errors.peso}</p> : <></>}
             </div>
           </div>
-          {/*<Select 
-            options={types}
-            labelField="nombre" valueField="nombre"
-            multi
-            onChange={(value)=>setInputs({...inputs, tipos: value})}
-  />*/}
           <label>TYPES: <p className='aclaration'>(you can select multiple types by holding "CTRL + LClick")</p></label>
           <select id="opciones" value={inputs.tipos} onChange={handleTypeSelector} multiple>
             <option value="" >Selecciona...</option>

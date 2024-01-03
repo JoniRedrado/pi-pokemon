@@ -1,4 +1,3 @@
-/* Estilos para el componente NewPokemonContainer */
 .new-pokemon-container {
     width: 40%;
     margin: auto;
@@ -61,33 +60,27 @@
     margin-top: 5px;
   }
   
-
-
-
-/* Estilos para el elemento select */
 select {
-    padding: 8px; /* Espaciado interno */
-    border-radius: 5px; /* Bordes redondeados */
-    border: 1px solid var(--gris); /* Borde */
-    background-color: var(--blanco); /* Color de fondo */
-    color: var(--gris); /* Color del texto */
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid var(--gris);
+    background-color: var(--blanco); 
+    color: var(--gris); 
   }
   
-  /* Estilos al pasar el cursor por encima del select */
+
   select:hover {
-    border-color: var(--bordo); /* Cambia el color del borde al pasar el cursor */
+    border-color: var(--bordo);
   }
   
-  /* Estilos cuando el select está enfocado */
+
   select:focus {
-    outline: none; /* Quita el contorno al enfocar */
-    box-shadow: 0 0 5px rgba(153, 1, 0, 0.5); /* Sombra al enfocar */
+    outline: none;
+    box-shadow: 0 0 5px rgba(153, 1, 0, 0.5); 
   }
 
 
-/* Estilos para pantallas pequeñas (teléfonos) */
 @media only screen and (max-width: 600px) {
-  /* Estilos para pantallas de hasta 600px de ancho */
   .new-pokemon-container{
     width: 90%;
     font-size: 1.8rem;
@@ -100,9 +93,7 @@ select {
   }
 }
 
-/* Estilos para pantallas medianas (tabletas) */
 @media only screen and (min-width: 601px) and (max-width: 1000px) {
-  /* Estilos para pantallas de 601px a 1024px de ancho */
   .new-pokemon-container{
     width: 60%;
     font-size: 1.5rem;
